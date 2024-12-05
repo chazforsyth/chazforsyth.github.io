@@ -25,7 +25,7 @@ a:hover {
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: 600px; /* Adjust for wider layouts if necessary */
+    max-width: 600px;
     margin: 0 auto;
     gap: 1rem;
     padding: 1rem;
@@ -54,6 +54,27 @@ ul {
 
 ul li {
     margin: 0.5rem 0;
+}
+
+/* Social Media Buttons */
+.social-media-buttons {
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+}
+
+.social-button {
+    background-color: #1E1E1E;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.social-button img {
+    width: 100%;
+    height: auto;
+    max-width: 100px; /* Adjust as needed */
 }
 
 /* Mobile Optimization */
