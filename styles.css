@@ -75,12 +75,12 @@ ul li {
 
 /* Hover Effects */
 .social-button:hover img {
-    opacity: 0.7; /* Makes the image slightly transparent on hover */
+    opacity: 0;
 }
 
-/* JavaScript Hover Image Swap */
-.social-button img:hover {
-    content: url(''); /* Allow JS to swap images */
+/* Image Hover (Switch to Hover Image) */
+.social-button:hover img {
+    content: url('images/instagram-hover.png'); /* Replace with hover image */
 }
 
 /* Mobile Optimization */
