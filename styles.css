@@ -61,26 +61,38 @@ ul li {
 .social-button {
     display: inline-block;
     width: 100%;
-    max-width: 120px; /* Adjust button size */
-    height: auto;
+    max-width: 120px;
+    height: 120px; /* Adjust button size */
+    background-size: cover;
+    background-position: center;
     cursor: pointer;
     border: none;
 }
 
-.social-button img {
-    width: 100%;
-    height: auto;
-    transition: opacity 0.3s ease; /* Smooth transition for hover effect */
+/* Default Images */
+.social-button.instagram .social-icon {
+    background-image: url('images/instagram-placeholder.png');
+}
+
+.social-button.x .social-icon {
+    background-image: url('images/x-placeholder.png');
+}
+
+.social-button.youtube .social-icon {
+    background-image: url('images/youtube-placeholder.png');
 }
 
 /* Hover Effects */
-.social-button:hover img {
-    opacity: 0;
+.social-button.instagram:hover .social-icon {
+    background-image: url('images/instagram-hover.png');
 }
 
-/* Image Hover (Switch to Hover Image) */
-.social-button:hover img {
-    content: url('images/instagram-hover.png'); /* Replace with hover image */
+.social-button.x:hover .social-icon {
+    background-image: url('images/x-hover.png');
+}
+
+.social-button.youtube:hover .social-icon {
+    background-image: url('images/youtube-hover.png');
 }
 
 /* Mobile Optimization */
