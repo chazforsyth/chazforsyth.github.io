@@ -1,106 +1,93 @@
-/* General Styles */
+/* General Reset */
+body, h1, p, a {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
 body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background-color: #121212;
-    color: #FFFFFF;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+  background-color: #121212;
+  color: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }
 
-a {
-    text-decoration: none;
-}
-
-/* Container */
 .container {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
-    gap: 1rem;
-    padding: 1rem;
+  display: flex;
+  flex-direction: row;
+  max-width: 1200px;
+  width: 100%;
+  padding: 20px;
+  gap: 20px;
 }
 
-/* Columns */
 .column {
-    flex: 1;
-    padding: 1rem;
-    background-color: #1E1E1E;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
-.left {
-    /* Placeholder for blog customization */
+/* Left Column (Blog Placeholder) */
+.blog {
+  background-color: #1e1e1e;
+  padding: 20px;
+  border-radius: 10px;
+  min-height: 300px;
 }
 
-.right {
-    /* Placeholder for social media customization */
+.blog h1 {
+  color: #e0e0e0;
+  margin-bottom: 10px;
 }
 
-ul {
-    list-style: none;
-    padding: 0;
+.blog p {
+  color: #b0b0b0;
 }
 
-ul li {
-    margin: 0.5rem 0;
-}
-
-/* Social Media Buttons */
-.social-media-buttons {
-    display: flex;
-    gap: 10px;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+/* Right Column (Social Media Buttons) */
+.social-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
 .social-button {
-    display: inline-block;
-    width: 120px; /* Button width */
-    height: 120px; /* Button height */
-    background-size: cover;
-    background-position: center;
-    cursor: pointer;
-    border: none;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  width: 40px;
+  height: 40px;
+  background-color: #333;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease;
 }
 
-/* Default Images */
-.social-button.instagram .social-icon {
-    background-image: url('images/instagram-placeholder.png');
+.social-button img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.3s ease;
 }
 
-.social-button.x .social-icon {
-    background-image: url('images/x-placeholder.png');
+.social-button:hover {
+  transform: scale(1.1);
 }
 
-.social-button.youtube .social-icon {
-    background-image: url('images/youtube-placeholder.png');
-}
-
-/* Hover Effects */
-.social-button.instagram:hover .social-icon {
-    background-image: url('images/instagram-hover.png');
-}
-
-.social-button.x:hover .social-icon {
-    background-image: url('images/x-hover.png');
-}
-
-.social-button.youtube:hover .social-icon {
-    background-image: url('images/youtube-hover.png');
+/* Hover Effects for Images */
+.social-button:hover img {
+  opacity: 0;
 }
 
 /* Mobile Optimization */
-@media (min-width: 768px) {
-    .container {
-        flex-direction: row;
-    }
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .column {
+    flex: none;
+    width: 100%;
+  }
 }
