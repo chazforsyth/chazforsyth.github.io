@@ -53,30 +53,53 @@ body {
   gap: 15px;
 }
 
+/* Social Media Button Styles */
 .social-button {
-  width: 40px;
-  height: 40px;
+  width: 60px; /* Set the width and height for the button */
+  height: 60px;
   background-color: #333;
-  border-radius: 50%;
+  border-radius: 50%; /* Circular buttons */
   overflow: hidden;
   cursor: pointer;
+  position: relative; /* To position the images correctly */
   transition: transform 0.3s ease;
 }
 
+/* Ensure both images fit the circular button */
 .social-button img {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: opacity 0.3s ease;
+  opacity: 1; /* Default to show the non-hover image */
 }
 
-.social-button:hover {
-  transform: scale(1.1);
-}
-
-/* Hover Effects for Images */
-.social-button:hover img {
+/* Hide the hover image initially */
+.social-button .instagram-hover-image,
+.social-button .x-hover-image,
+.social-button .youtube-hover-image {
   opacity: 0;
+}
+
+/* Hover Effects for the Images */
+.social-button:hover {
+  transform: scale(1.1); /* Slight zoom on hover */
+}
+
+/* Show the hover image when hovered */
+.social-button:hover .instagram-hover-image,
+.social-button:hover .x-hover-image,
+.social-button:hover .youtube-hover-image {
+  opacity: 1;
+}
+
+.social-button:hover .instagram-image,
+.social-button:hover .x-image,
+.social-button:hover .youtube-image {
+  opacity: 0; /* Hide the normal image on hover */
 }
 
 /* Mobile Optimization */
