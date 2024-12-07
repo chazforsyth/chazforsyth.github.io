@@ -4,29 +4,75 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CHAZ</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: black;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: row;
+            width: 90%;
+            max-width: 600px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .left-column {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .left-column img {
+            max-width: 100%;
+            max-height: 300px;
+        }
+
+        .right-column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .button {
+            margin: 10px 0;
+            padding: 10px 20px;
+            background-color: #f49200;
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            text-align: center;
+            transition: background-color 0.3s ease;
+            width: 100%;
+            max-width: 200px;
+        }
+
+        .button:hover {
+            background-color: #e50b14;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <div class="column left">
-            <div class="placeholder">
-                <h2>Blog</h2>
-                <p></p>
-
-                <div class="substack-post-embed"><p lang="en">Hello, world!</p><p> - CHAZ</p><a data-comment-link href="https://substack.com/@contentchaser/note/c-80236410">Read on Substack</a></div><script async src="https://substack.com/embedjs/embed.js" charset="utf-8"></script>
-
-            </div>
+        <div class="left-column">
+            <img src="images/c3.png" alt="Logo">
         </div>
-        <div class="column right">
-            <div class="placeholder">
-                <h2>Social Media</h2>
-                <p>Follow me on social media:</p>
-                <div class="social-buttons">
-                    <a href="https://instagram.com/chaz.video" class="social-button instagram" target="_blank">Instagram</a>
-                    <a href="https://x.com/CONTENT_CHASER" class="social-button x" target="_blank">X</a>
-                    <a href="https://youtube.com/@CONTENT_CHASER" class="social-button youtube" target="_blank">YouTube</a>
-                </div>
-            </div>
+        <div class="right-column">
+            <a href="https://instagram.com/chaz.video" class="button" target="_blank">Instagram</a>
+            <a href="https://x.com/CONTENT_CHASER" class="button" target="_blank">X</a>
+            <a href="https://youtube.com/@CONTENT_CHASER" class="button" target="_blank">YouTube</a>
         </div>
     </div>
 </body>
