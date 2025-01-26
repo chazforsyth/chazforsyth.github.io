@@ -18,14 +18,13 @@
 
         .container {
             display: flex;
-            flex-direction: row;
+            flex-direction: column; /* Stack image and buttons vertically */
             width: 90%;
             max-width: 600px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         }
 
         .left-column {
-            flex: 1;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -33,13 +32,12 @@
         }
 
         .left-column img {
-            width: 100px; /* Set fixed width */
-            height: 100px; /* Set fixed height */
-            object-fit: contain; /* Preserve aspect ratio and prevent distortion */
+            width: 200px; /* Set image size to 200x200 */
+            height: 200px;
+            object-fit: contain; /* Preserve aspect ratio */
         }
 
         .right-column {
-            flex: 1;
             display: flex;
             flex-direction: row; /* Align buttons in a row */
             justify-content: center;
