@@ -48,19 +48,50 @@
 
         .button {
             margin: 10px 0;
-            padding: 10px 20px;
-            background-color: #f49200;
+            padding: 0;
+            background-color: #f49200; /* Default color */
             color: white;
             text-decoration: none;
             font-size: 16px;
             text-align: center;
             transition: background-color 0.3s ease;
-            width: 100%;
-            max-width: 200px;
+            width: 100px; /* Set fixed width for aspect ratio */
+            height: 100px; /* Set fixed height for aspect ratio */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%; /* Make buttons circular */
         }
 
-        .button:hover {
-            background-color: #e50b14;
+        /* Instagram button color */
+        .button.instagram {
+            background-color: #E4405F;
+        }
+        
+        .button.instagram:hover {
+            background-color: #F5A9B8;
+        }
+
+        /* X button color */
+        .button.x {
+            background-color: #1D9BF0;
+        }
+        
+        .button.x:hover {
+            background-color: #66B9F9;
+        }
+
+        /* YouTube button color */
+        .button.youtube {
+            background-color: #FF0000;
+        }
+        
+        .button.youtube:hover {
+            background-color: #FF4C4C;
+        }
+
+        .button:active {
+            background-color: #ddd; /* Lighter color on click */
         }
     </style>
 </head>
@@ -70,9 +101,9 @@
             <img src="images/c3.png" alt="Logo">
         </div>
         <div class="right-column">
-            <a href="https://instagram.com/contentchazer" class="button" target="_blank">Instagram</a>
-            <a href="https://x.com/contentchazer" class="button" target="_blank">X</a>
-            <a href="https://youtube.com/@contentchazer" class="button" target="_blank">YouTube</a>
+            <a href="https://instagram.com/contentchazer" class="button instagram" target="_blank">Instagram</a>
+            <a href="https://x.com/contentchazer" class="button x" target="_blank">X</a>
+            <a href="https://youtube.com/@contentchazer" class="button youtube" target="_blank">YouTube</a>
         </div>
     </div>
 </body>
