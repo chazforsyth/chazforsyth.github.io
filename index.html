@@ -43,6 +43,7 @@
             justify-content: center;
             align-items: center;
             padding: 20px;
+            flex-wrap: wrap; /* Allow wrapping of buttons on smaller screens */
         }
 
         .button {
@@ -54,12 +55,14 @@
             font-size: 16px;
             text-align: center;
             transition: background-color 0.3s ease;
-            width: 100px; /* Set fixed width for aspect ratio */
-            height: 100px; /* Set fixed height for aspect ratio */
+            width: 100px; /* Fixed width for aspect ratio */
+            height: 100px; /* Fixed height for aspect ratio */
             display: flex;
             justify-content: center;
             align-items: center;
             border-radius: 50%; /* Make buttons circular */
+            max-width: 100px; /* Ensure buttons don't stretch */
+            max-height: 100px; /* Ensure buttons don't stretch */
         }
 
         /* Instagram button color */
