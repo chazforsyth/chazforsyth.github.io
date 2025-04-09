@@ -1,112 +1,246 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CHAZ</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: black;
-            color: #ffffff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hi, I'm Chaz!</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        .container {
-            display: flex;
-            flex-direction: column; /* Stack image and buttons vertically */
-            width: 90%;
-            max-width: 600px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-        }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #121212;
+      color: #f1f1f1;
+      padding: 0;
+      line-height: 1.6;
+    }
 
-        .left-column {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
+    header {
+      text-align: center;
+      padding: 3rem 1rem 2rem;
+      background-color: #414042;
+    }
 
-        .left-column img {
-            width: 200px; /* Set image size to 200x200 */
-            height: 200px;
-            object-fit: contain; /* Preserve aspect ratio */
-        }
+    header img {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 1rem;
+    }
 
-        .right-column {
-            display: flex;
-            flex-direction: row; /* Align buttons in a row */
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            flex-wrap: wrap; /* Allow wrapping of buttons on smaller screens */
-        }
+    header h1 {
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
 
-        .button {
-            margin: 10px;
-            padding: 0;
-            background-color: #f49200; /* Default color */
-            color: white;
-            text-decoration: none;
-            font-size: 16px;
-            text-align: center;
-            transition: background-color 0.3s ease;
-            width: 100px; /* Fixed width for aspect ratio */
-            height: 100px; /* Fixed height for aspect ratio */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 50%; /* Make buttons circular */
-            max-width: 100px; /* Ensure buttons don't stretch */
-            max-height: 100px; /* Ensure buttons don't stretch */
-        }
+    .resume-button {
+      background-color: #f1f1f1;
+      color: #121212;
+      border: none;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      border-radius: 6px;
+      margin: 1.5rem auto;
+      display: inline-block;
+    }
 
-        /* Instagram button color */
-        .button.instagram {
-            background-color: #E4405F;
-        }
-        
-        .button.instagram:hover {
-            background-color: #F5A9B8;
-        }
+    header p {
+      max-width: 600px;
+      margin: 1.5rem auto 1rem;
+      color: #ccc;
+      font-size: 1rem;
+    }
 
-        /* X button color */
-        .button.x {
-            background-color: #1D9BF0;
-        }
-        
-        .button.x:hover {
-            background-color: #66B9F9;
-        }
+    .resume-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
 
-        /* YouTube button color */
-        .button.youtube {
-            background-color: #FF0000;
-        }
-        
-        .button.youtube:hover {
-            background-color: #FF4C4C;
-        }
+    .resume-content {
+      width: 90%;
+      height: 90%;
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+    }
 
-        .button:active {
-            background-color: #ddd; /* Lighter color on click */
-        }
-    </style>
+    .resume-content iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 1.5rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #333;
+    }
+
+    main {
+      padding: 2rem;
+      background-color: #ffffff;
+      color: #000000;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .project {
+      background-color: #1e1e1e;
+      border-radius: 8px;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+
+    .project:hover {
+      transform: scale(1.03);
+    }
+
+    .project img, .project video {
+      width: 100%;
+      display: block;
+    }
+
+    .project-content {
+      padding: 1rem;
+    }
+
+    .project-title {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: #f1f1f1;
+    }
+
+    .project-description {
+      font-size: 0.95rem;
+      color: #bbb;
+    }
+
+    .contact {
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid #ddd;
+    }
+
+    .contact h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: #000;
+    }
+
+    .contact-info {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+      font-size: 1rem;
+      color: #000;
+    }
+
+    .contact-info a {
+      color: #000;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 3rem;
+      font-size: 0.9rem;
+      color: #777;
+      padding-bottom: 2rem;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="left-column">
-            <img src="images/c3.png" alt="Logo">
-        </div>
-        <div class="right-column">
-            <a href="https://instagram.com/contentchazer" class="button instagram" target="_blank">Instagram</a>
-            <a href="https://x.com/contentchazer" class="button x" target="_blank">X</a>
-            <a href="https://youtube.com/@contentchazer" class="button youtube" target="_blank">YouTube</a>
-        </div>
+  <header>
+    <img src="chaz_forsyth_picture_bw.png" alt="Chaz Forsyth">
+    <h1>Hi, I'm Chaz!</h1>
+    <button class="resume-button" onclick="document.getElementById('resumeModal').style.display='flex'">View My Resume</button>
+    <p>I'm a Producer with a background in live events, video production, and digital media. Below are some examples of projects I've worked on.</p>
+  </header>
+
+  <div id="resumeModal" class="resume-modal" onclick="this.style.display='none'">
+    <div class="resume-content" onclick="event.stopPropagation()">
+      <button class="close-btn" onclick="document.getElementById('resumeModal').style.display='none'">&times;</button>
+      <iframe src="chaz_forsyth_resume.pdf"></iframe>
     </div>
+  </div>
+
+  <main>
+    <h2 style="text-align:center; margin-bottom: 1.5rem; color: #000;">Project Gallery</h2>
+    <section class="gallery">
+      <div class="project">
+        <img src="afriendlyreferral.png" alt="Project Thumbnail">
+        <div class="project-content">
+          <div class="project-title">A Friendly Referral</div>
+          <div class="project-description">Short film.</div>
+        </div>
+      </div>
+
+      <div class="project">
+        <img src="mangocartpromo.png" alt="Project Thumbnail">
+        <div class="project-content">
+          <div class="project-title">Mango Cart Promo</div>
+          <div class="project-description">Marketing sizzle reel.</div>
+        </div>
+      </div>
+
+      <div class="project">
+        <img src="bikinginkyoto.png" alt="Project Thumbnail">
+        <div class="project-content">
+          <div class="project-title">Biking in Kyoto</div>
+          <div class="project-description">Short film.</div>
+        </div>
+      </div>
+
+      <div class="project">
+        <img src="thejoint.png" alt="Project Thumbnail">
+        <div class="project-content">
+          <div class="project-title">The Joint</div>
+          <div class="project-description">Short film.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact">
+      <h2>Contact</h2>
+      <div class="contact-info">
+        <p>Feel free to reach out for collaborations, opportunities, or just to connect.</p>
+        <p>Email: <a href="mailto:info@chaz.video">info@chaz.video</a></p>
+        <p>Phone: <a href="tel:+16572449656">+1 (657) 244-9656</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 chaz.video
+  </footer>
 </body>
 </html>
