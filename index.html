@@ -16,14 +16,29 @@
       font-family: 'Montserrat', sans-serif;
       background-color: #121212;
       color: #f1f1f1;
-      padding: 0;
       line-height: 1.6;
+    }
+
+    .top-nav {
+      display: flex;
+      justify-content: flex-end;
+      padding: 1rem;
+      background-color: #1e1e1e;
+    }
+
+    .top-nav a {
+      background-color: #03dac6;
+      color: #000;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
     }
 
     header {
       text-align: center;
-      padding: 3rem 1rem 2rem;
-      background-color: #414042;
+      padding: 2rem 1rem 2rem;
+      background-color: #1e1e1e;
     }
 
     header img {
@@ -41,8 +56,8 @@
     }
 
     .resume-button {
-      background-color: #f1f1f1;
-      color: #121212;
+      background-color: #03dac6;
+      color: #000;
       border: none;
       padding: 0.5rem 1rem;
       font-size: 1rem;
@@ -76,7 +91,7 @@
     .resume-content {
       width: 90%;
       height: 90%;
-      background: #fff;
+      background: #ffffff;
       border-radius: 10px;
       overflow: hidden;
       position: relative;
@@ -100,9 +115,15 @@
     }
 
     main {
-      padding: 2rem;
-      background-color: #ffffff;
-      color: #000000;
+      padding: 2rem 1rem;
+      background-color: #121212;
+      color: #f1f1f1;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      font-size: 1.5rem;
     }
 
     .gallery {
@@ -146,13 +167,12 @@
     .contact {
       margin-top: 3rem;
       padding-top: 2rem;
-      border-top: 1px solid #ddd;
+      border-top: 1px solid #333;
     }
 
     .contact h2 {
       text-align: center;
       margin-bottom: 1.5rem;
-      color: #000;
     }
 
     .contact-info {
@@ -160,11 +180,11 @@
       margin: 0 auto;
       text-align: center;
       font-size: 1rem;
-      color: #000;
+      color: #ccc;
     }
 
     .contact-info a {
-      color: #000;
+      color: #03dac6;
       text-decoration: none;
       font-weight: 600;
     }
@@ -179,6 +199,10 @@
   </style>
 </head>
 <body>
+  <div class="top-nav">
+    <a href="/clients.html">Client Portal</a>
+  </div>
+
   <header>
     <img src="/assets/chaz_forsyth_picture_bw.png" alt="Chaz Forsyth">
     <h1>Hi, I'm Chaz!</h1>
@@ -194,7 +218,7 @@
   </div>
 
   <main>
-    <h2 style="text-align:center; margin-bottom: 1.5rem; color: #000;">Project Gallery</h2>
+    <h2>Project Gallery</h2>
     <section class="gallery">
       <div class="project">
         <img src="/assets/afriendlyreferral.png" alt="Project Thumbnail">
