@@ -20,6 +20,9 @@
     }
 
     .top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 999;
       display: flex;
       justify-content: flex-end;
       padding: 1rem;
@@ -55,63 +58,11 @@
       margin-bottom: 0.5rem;
     }
 
-    .resume-button {
-      background-color: #03dac6;
-      color: #000;
-      border: none;
-      padding: 0.5rem 1rem;
-      font-size: 1rem;
-      font-weight: 600;
-      cursor: pointer;
-      border-radius: 6px;
-      margin: 1.5rem auto;
-      display: inline-block;
-    }
-
     header p {
       max-width: 600px;
       margin: 1.5rem auto 1rem;
       color: #ccc;
       font-size: 1rem;
-    }
-
-    .resume-modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.8);
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-    }
-
-    .resume-content {
-      width: 90%;
-      height: 90%;
-      background: #ffffff;
-      border-radius: 10px;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .resume-content iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-
-    .close-btn {
-      position: absolute;
-      top: 10px;
-      right: 20px;
-      font-size: 1.5rem;
-      background: none;
-      border: none;
-      cursor: pointer;
-      color: #333;
     }
 
     main {
@@ -206,16 +157,8 @@
   <header>
     <img src="/assets/chaz_forsyth_picture_bw.png" alt="Chaz Forsyth">
     <h1>Hi, I'm Chaz!</h1>
-    <button class="resume-button" onclick="document.getElementById('resumeModal').style.display='flex'">View My Resume</button>
     <p>I'm a Field Producer with a background in event planning, video production, and digital media. Below are some examples of projects I've worked on.</p>
   </header>
-
-  <div id="resumeModal" class="resume-modal" onclick="this.style.display='none'">
-    <div class="resume-content" onclick="event.stopPropagation()">
-      <button class="close-btn" onclick="document.getElementById('resumeModal').style.display='none'">&times;</button>
-      <iframe src="/assets/chaz_forsyth_resume_vfield.pdf"></iframe>
-    </div>
-  </div>
 
   <main>
     <h2>Project Gallery</h2>
@@ -257,8 +200,7 @@
       <h2>Contact</h2>
       <div class="contact-info">
         <p>Feel free to reach out for collaborations, opportunities, or just to connect.</p>
-        <p>Email: <a href="mailto:info@chaz.video">info@chaz.video</a></p>
-        <p>Phone: <a href="tel:+16572449656">+1 (657) 244-9656</a></p>
+        <p><a href="mailto:info@chaz.video">info@chaz.video</a> <span style="margin: 0 10px; color: #555;">|</span> <a href="tel:+16572449656">+1 (657) 244-9656</a></p>
       </div>
     </section>
   </main>
