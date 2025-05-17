@@ -14,8 +14,8 @@
 
     body {
       font-family: 'Montserrat', sans-serif;
-      background-color: #121212;
-      color: #f1f1f1;
+      background-color: #1b1b1b;
+      color: #fdfdfd;
       line-height: 1.6;
     }
 
@@ -24,24 +24,35 @@
       top: 0;
       z-index: 999;
       display: flex;
-      justify-content: flex-end;
+      justify-content: space-between;
+      align-items: center;
       padding: 1rem;
-      background-color: #1e1e1e;
+      background-color: #2a2a2a;
+    }
+
+    .top-nav .logo {
+      height: 40px;
+      object-fit: contain;
     }
 
     .top-nav a {
-      background-color: #03dac6;
-      color: #000;
+      background-color: #fdfdfd;
+      color: #1b1b1b;
       padding: 0.5rem 1rem;
       border-radius: 6px;
       text-decoration: none;
       font-weight: 600;
+      transition: background-color 0.3s;
+    }
+
+    .top-nav a:hover {
+      background-color: #ffe0b2;
     }
 
     header {
       text-align: center;
-      padding: 2rem 1rem 2rem;
-      background-color: #1e1e1e;
+      padding: 2rem 1rem;
+      background-color: #2a2a2a;
     }
 
     header img {
@@ -56,25 +67,27 @@
       font-size: 2rem;
       font-weight: 600;
       margin-bottom: 0.5rem;
+      color: #ff5722;
     }
 
     header p {
       max-width: 600px;
       margin: 1.5rem auto 1rem;
-      color: #ccc;
+      color: #ddd;
       font-size: 1rem;
     }
 
     main {
       padding: 2rem 1rem;
-      background-color: #121212;
-      color: #f1f1f1;
+      background-color: #1b1b1b;
+      color: #fdfdfd;
     }
 
     h2 {
       text-align: center;
       margin-bottom: 1.5rem;
       font-size: 1.5rem;
+      color: #ff6f00;
     }
 
     .gallery {
@@ -84,7 +97,7 @@
     }
 
     .project {
-      background-color: #1e1e1e;
+      background-color: #2a2a2a;
       border-radius: 8px;
       overflow: hidden;
       transition: transform 0.3s ease;
@@ -107,7 +120,7 @@
       font-size: 1.1rem;
       margin-bottom: 0.5rem;
       font-weight: 600;
-      color: #f1f1f1;
+      color: #fdfdfd;
     }
 
     .project-description {
@@ -118,12 +131,13 @@
     .contact {
       margin-top: 3rem;
       padding-top: 2rem;
-      border-top: 1px solid #333;
+      border-top: 1px solid #444;
     }
 
     .contact h2 {
       text-align: center;
       margin-bottom: 1.5rem;
+      color: #ff5722;
     }
 
     .contact-info {
@@ -131,11 +145,11 @@
       margin: 0 auto;
       text-align: center;
       font-size: 1rem;
-      color: #ccc;
+      color: #ddd;
     }
 
     .contact-info a {
-      color: #03dac6;
+      color: #ff6f00;
       text-decoration: none;
       font-weight: 600;
     }
@@ -144,13 +158,14 @@
       text-align: center;
       margin-top: 3rem;
       font-size: 0.9rem;
-      color: #777;
+      color: #999;
       padding-bottom: 2rem;
     }
   </style>
 </head>
 <body>
   <div class="top-nav">
+    <img src="/assets/cvlogo.png" alt="Logo" class="logo">
     <a href="/clients.html">Client Portal</a>
   </div>
 
