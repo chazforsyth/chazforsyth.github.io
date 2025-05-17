@@ -62,22 +62,21 @@
   <p id="message"></p>
 
   <script>
-    const codeMap = {
-      'hiwire': '/clients/hiwire/index.html',
-      // Add more codes and target paths here
-      // 'anotherCode': '/other/websites/someone/index.html'
-    };
+  const codeMap = {
+    'hiwire': '/clients/hiwire/index.html',
+    // Add more codes (all lowercase)
+  };
 
-    function checkCode() {
-      const code = document.getElementById('codeInput').value.trim();
-      const path = codeMap[code];
+  function checkCode() {
+    const code = document.getElementById('codeInput').value.trim().toLowerCase();
+    const path = codeMap[code];
 
-      if (path) {
-        window.location.href = path;
-      } else {
-        document.getElementById('message').textContent = 'Invalid code. Please try again.';
-      }
+    if (path) {
+      window.location.href = path;
+    } else {
+      document.getElementById('message').textContent = 'Invalid code. Please try again.';
     }
-  </script>
+  }
+</script>
 </body>
 </html>
