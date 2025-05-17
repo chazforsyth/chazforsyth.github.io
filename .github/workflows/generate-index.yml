@@ -1,0 +1,31 @@
+name: Generate Directory Index
+
+on:
+  push:
+    paths:
+      - 'other/**'
+      - '.github/workflows/generate-index.yml'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Generate index.html for /other/
+        run: |
+          cd other
+          echo "<!DOCTYPE html><html><head><title>Index of /other/</title></head><body><h1>Contents</h1><ul>" > index.html
+          for f in $(find . -type f ! -name "index.html" | sort); do
+            cleanname=$(echo "$f" | sed 's|^\./||')
+            echo "<li><a href=\"$cleanname\">$cleanname</a></li>" >> index.html
+          done
+          echo "</ul></body></html>" >> index.html
+
+      - name: Commit and Push index.html
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git add other/index.html
+          git commit -m "Update /other/ index.html" || echo "No changes to commit"
+          git push
