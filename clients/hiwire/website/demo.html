@@ -4,296 +4,283 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HIWIRE</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Allerta+Stencil&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Allerta+Stencil&family=Victor+Mono:wght@400&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-
+    html {
+      scroll-behavior: smooth;
+    }
     body {
-      font-family: 'Inter', sans-serif;
       background-color: #000;
       color: #fff;
+      font-family: 'Victor Mono', monospace;
     }
-
-    .navbar {
+    section {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 1.2s ease-out;
+      padding: 3rem 2rem;
+    }
+    section.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    #what-we-do {
+      background-color: #0a0a0a;
+    }
+    #our-work {
+      border-top: 2px solid #222;
+      border-bottom: 2px solid #222;
+    }
+    #brand-partners {
+      background-color: #0f0f0f;
+    }
+    nav {
+  transition: background-color 0.5s ease;
       position: sticky;
       top: 0;
       width: 100%;
-      background-color: #000;
+      background-color: transparent;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      z-index: 1000;
+
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 1rem 2rem;
       z-index: 1000;
     }
-
     .logo {
-      font-family: 'Allerta Stencil', sans-serif;
       font-size: 1.5rem;
-      color: #fff;
+      font-weight: normal;
+      font-family: 'Allerta Stencil', sans-serif;
     }
-
-    .nav-links {
-      display: flex;
-      gap: 1.5rem;
-    }
-
-    .contact {
-      padding: 0.75rem 1.5rem;
-      background-color: #000;
-      color: #fff;
-      border: 2px solid #fff;
-      border-radius: 0.5rem;
-      text-decoration: none;
-      font-weight: bold;
-      letter-spacing: 0.1rem;
-      transition: background-color 0.3s ease, color 0.3s ease;
-    }
-
-    .contact:hover {
-      background-color: #fff;
-      color: #000;
-    }
-
-    .hamburger {
-      display: flex;
-      flex-direction: column;
+    .menu-toggle {
+      font-size: 1.5rem;
       cursor: pointer;
-    }
-
-    .hamburger div {
-      width: 25px;
-      height: 3px;
-      background-color: white;
-      margin: 4px 0;
-    }
-
-    .dropdown {
-      display: none;
-      position: absolute;
-      top: 100%;
-      right: 0;
-      background-color: black;
-      padding: 0.5rem;
-      flex-direction: column;
-      width: max-content;
-    }
-
-    .dropdown a {
-      padding: 0.75rem 1.5rem;
-      text-decoration: none;
-      color: #fff;
       display: block;
+    }
+    .dropdown-menu {
+      position: fixed;
+      top: 0;
+      left: 0;
       width: 100%;
-      font-weight: bold;
-      letter-spacing: 0.1rem;
-      transition: background-color 0.3s ease, color 0.3s ease;
-      border: 2px solid transparent;
-    }
-
-    .dropdown a:hover {
-      background-color: #fff;
-      color: #000;
-      border-color: #fff;
-    }
-
-    .hero, .section-feature {
-      opacity: 0;
-      transform: translateY(50px);
-      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-    }
-
-    .section-visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .hero {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 4rem 2rem;
-      gap: 2rem;
-      background-color: #72B3C7;
-    }
-
-    .hero-text {
-      flex: 1;
-    }
-
-    .hero-text h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-    }
-
-    .hero-text p {
-      font-size: 1.25rem;
-      line-height: 1.6;
-    }
-
-    .hero-media {
-      flex: 1;
-      display: flex;
+      height: 100vh;
       justify-content: center;
       align-items: center;
+      z-index: 9999;
+      display: none;
+      flex-direction: column;
+      background-color: rgba(34, 34, 34, 0.75);
+      padding: 1rem;
     }
-
-    .hero-media img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 0.5rem;
-    }
-
-    .section-feature {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 4rem 2rem;
-      background-color: #0e1b2d;
+    .dropdown-menu a {
       color: #fff;
+      text-decoration: none;
+      margin: 1rem 0;
+      font-size: 1.5rem;
+      padding: 1rem;
+      text-align: center;
+      width: 100%;
     }
-
-    .feature-text {
-      flex: 1;
-      padding-right: 2rem;
+    .dropdown-menu a:hover,
+    .dropdown-menu a:focus {
+      background-color: #000;
+      border-radius: 0;
     }
-
-    .feature-text h2 {
+    .show-menu {
+      display: flex;
+      flex-direction: column;
+    }
+    .hero {
+      position: relative;
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-end;
+      text-align: left;
+      height: 100vh;
+      overflow: hidden;
+      padding: 2rem;
+    }
+    .hero video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+    .hero > div {
+      z-index: 1;
+      max-width: 600px;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: slideInUp 1s ease-out 0.3s forwards;
+      transition: opacity 0.5s ease-out;
+    }
+    @keyframes slideInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    .hero p {
+      font-size: 1.2rem;
+    }
+    section h2 {
       font-size: 2rem;
       margin-bottom: 1rem;
+      text-align: left;
     }
-
-    .feature-text p {
-      font-size: 1.1rem;
-      line-height: 1.6;
-      margin-bottom: 1.5rem;
+    section h3 {
+      font-size: 1.3rem;
+      margin-top: 1.5rem;
     }
-
-    .feature-text a {
-      display: inline-block;
-      color: #00aaff;
-      font-weight: bold;
-      text-decoration: none;
+    section p {
+      font-size: 1rem;
+      max-width: 700px;
+      margin: 0 0 2rem 0;
+      text-align: left;
+    }
+    section ul {
+      list-style: none;
+      padding: 0;
+      text-align: left;
+    }
+    section ul li {
       margin-bottom: 0.5rem;
     }
-
-    .feature-image {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-    }
-
-    .feature-image img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 0.5rem;
-    }
-
     footer {
-      background-color: #000;
-      padding: 2rem;
+      background-color: #111;
       text-align: center;
+      padding: 1.5rem;
       font-size: 0.9rem;
-      color: #aaa;
+      margin-top: 2rem;
     }
-
-    footer .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      flex-wrap: wrap;
-      margin-top: 0.5rem;
-    }
-
-    footer a {
-      color: #aaa;
-      text-decoration: none;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
-    }
-
-    @media (max-width: 768px) {
-      .hero, .section-feature {
-        flex-direction: column;
-        text-align: center;
+    @media (min-width: 600px) {
+      .hero h1 {
+        font-size: 3rem;
       }
-      .feature-text {
-        padding-right: 0;
+      .dropdown-menu {
+        right: 2rem;
       }
     }
-  </style>
+    @media (min-width: 768px) {
+      nav {
+        padding: 1rem 3rem;
+      }
+    }
+      
+    
+</style>
 </head>
 <body>
-  <nav class="navbar">
+  <nav>
     <div class="logo">HIWIRE</div>
-    <div class="nav-links">
-      <a href="#contact" class="contact">CONTACT</a>
-    </div>
-    <div class="hamburger" onclick="toggleDropdown()">
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-    <div class="dropdown" id="dropdownMenu">
-      <a href="#projects">PROJECTS</a>
-      <a href="#company">COMPANY</a>
+    <div class="menu-toggle" onclick="toggleMenu()">&#9776;</div>
+    <div class="dropdown-menu" id="dropdownMenu">
+      <a href="#hero" onclick="toggleMenu()">Home</a>
+      <a href="#our-work" onclick="toggleMenu()">Our Work</a>
+      <a href="#connect" onclick="toggleMenu()">Contact Us</a>
+      <a href="javascript:void(0);" onclick="toggleMenu()">✕ Close</a>
     </div>
   </nav>
 
-  <section class="hero">
-    <div class="hero-text">
-      <h1>Massive Art, Engineered by Design</h1>
-      <p>We design, 3D print, and build monumental art installations for commercial spaces. From concept to reality, we bring bold visions to life at scale.</p>
-    </div>
-    <div class="hero-media">
-      <img src="/clients/hiwire/website/assets/bird.avif" alt="Hero media">
-    </div>
-  </section>
-
-  <section class="section-feature">
-    <div class="feature-text">
-      <h2>Technology Meets Artistry</h2>
-      <p>Our in-house team combines advanced robotics, engineering, and fine art to deliver custom installations that captivate audiences and elevate brand experiences.</p>
-      <a href="#">VIEW PROJECTS →</a><br>
-      <a href="#">LEARN ABOUT OUR PROCESS →</a>
-    </div>
-    <div class="feature-image">
-      <img src="/clients/hiwire/website/assets/crane.jpeg" alt="Media example">
+  <section class="hero active" id="hero">
+    <video autoplay muted loop playsinline>
+      <source src="/clients/hiwire/website/compressedvideo.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div>
+      <h1>From digital to reality.</h1>
+      <p>We design, develop, and deliver captivating art sculptures that elevate spaces and evoke imagination.</p>
     </div>
   </section>
 
-  <footer>
-    <p>Copyright © HIWIRE 2025</p>
-    <div class="footer-links">
-      <a href="#">Privacy policy</a>
-      <a href="#">Terms of use</a>
-      <a href="#">Disclaimer</a>
-      <a href="#">Patents</a>
+  <section id="what-we-do">
+    <h2>What We Do</h2>
+    <div>
+      <h3>3D Design</h3>
+      <p>We craft immersive and detailed 3D models to help visualize concepts before they come to life.</p>
+      <h3>Fabrication</h3>
+      <p>We utilize the latest technology and materials to build high-quality, durable structures tailored to your brand's vision.</p>
+      <h3>Installation</h3>
+      <p>Our installation team ensures seamless deployment of your projects on site—on time and to exacting standards.</p>
     </div>
+  </section>
+
+  <section id="our-work">
+    <h2>Our Work</h2>
+    <p>From pop-up experiences to permanent displays, our portfolio includes projects across diverse industries—each customized for impact and originality.</p>
+  </section>
+
+  <section id="brand-partners">
+    <h2>Brand Partners</h2>
+    <p>We've collaborated with global brands and innovative startups, bringing their stories to life.</p>
+    <ul>
+      <li>• Nike</li>
+      <li>• Glenn Kaino</li>
+      <li>• Pace Gallery</li>
+      <li>• Metro LA</li>
+      <li>• Lita Albuquerque</li>
+      <li>• Intuit</li>
+      <li>• Steve Ballmer</li>
+    </ul>
+  </section>
+
+  <section id="connect" style="background-color: #000; padding: 4rem 2rem;">
+    <h2 style="font-size: 2.5rem; font-weight: bold; margin-bottom: 1.5rem; text-align: center;">Bring your ideas to life.</h2>
+    <div style="text-align: center; margin-top: 2rem;">
+      <button style="background: white; color: black; border: none; padding: 0.75rem 2rem; font-size: 1rem; border-radius: 9999px; cursor: pointer;">Contact Us</button>
+    </div>
+    <div style="display: flex; justify-content: flex-start; gap: 4rem; flex-wrap: wrap; margin-top: 4rem;">
+      <div style="text-align: left; max-width: 250px;">
+        <p>2729 SE Division<br>Portland, OR 97202<br>(111) 111-1111</p>
+      </div>
+    </div>
+  </section>
+
+  <footer style="text-align: right; padding: 1.5rem; font-size: 0.9rem; background-color: #111;">
+    &copy; 2025 HIWIRE
   </footer>
 
   <script>
-    function toggleDropdown() {
-      const dropdown = document.getElementById('dropdownMenu');
-      dropdown.style.display = dropdown.style.display === 'flex' ? 'none' : 'flex';
+    function toggleMenu() {
+      const menu = document.getElementById('dropdownMenu');
+      menu.classList.toggle('show-menu');
     }
 
-    const observer = new IntersectionObserver((entries) => {
+    const sections = document.querySelectorAll("section");
+    const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('section-visible');
+          entry.target.classList.add("active");
         }
       });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.5 });
 
-    document.querySelectorAll('.hero, .section-feature').forEach(section => {
-      observer.observe(section);
-    });
-  </script>
+    sections.forEach(section => observer.observe(section));
+    window.addEventListener('scroll', function () {
+    const nav = document.querySelector('nav');
+    const heroHeight = document.getElementById('hero').offsetHeight;
+    if (window.scrollY > heroHeight - 50) {
+      nav.style.backgroundColor = '#000';
+    } else {
+      nav.style.backgroundColor = 'transparent';
+    }
+  });
+</script>
 </body>
 </html>
